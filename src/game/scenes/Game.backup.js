@@ -9,11 +9,8 @@ import man from "../assets/man.png";
 
 
 export class Game extends Scene {
-
     constructor() {
-        super('Game');
-        // const gameWidth = this.sys.game.config.width;
-        // const gameHeight = this.sys.game.config.height;
+        super('Game2');
     }
 
     preload() {
@@ -29,17 +26,13 @@ export class Game extends Scene {
     }
 
     create() {
-
-        const gameWidth = this.game.config.width
-        const gameHeight = this.game.config.height
-
-        this.add.image(gameWidth * 0.5, 160, "forest");
-        this.add.image(gameWidth * 0.5, 298, "logo_dc");
+        this.add.image(240, 160, "forest");
+        this.add.image(240, 298, "logo_dc");
 
         const platforms = this.physics.add.staticGroup();
         platforms.create(45, 198, "platform").setVisible(false).setScale(0.5).refreshBody();
         platforms.create(420, 198, "platform").setVisible(false).setScale(0.5).refreshBody();
-        platforms.create(gameWidth * 0.5, 296, "platform").setVisible(false).setScale(1.6).refreshBody();
+        platforms.create(240, 296, "platform").setVisible(false).setScale(1.6).refreshBody();
 
         //platforms
         this.player = this.physics.add.sprite(60, 90, "man");
@@ -149,12 +142,11 @@ export class Game extends Scene {
 
         console.log("player", this.player)
 
-        this.add.image(gameWidth * 0.5, gameHeight * 0.5, "pitTop");
+        this.add.image(240, 160, "pitTop");
     }
 
     update() {
         const cursors = this.input.keyboard.createCursorKeys();
-
         if (cursors.left.isDown && !cursors.up.isDown) {
             this.player.setVelocityX(-180);
             // this.player.facingLeft = true;
@@ -169,6 +161,7 @@ export class Game extends Scene {
             } else {
                 this.player.anims.play("jumpRight", true);
             }
+
         } else {
             if (this.player.FACING_LEFT) {
                 this.player.anims.play("lookLeft");
@@ -178,24 +171,6 @@ export class Game extends Scene {
             this.player.setVelocityX(0);
         }
 
-        // Check bounds
-        const gameWidth = this.game.config.width
-        // Check if player reaches the right edge of the screen
-        if (this.player.x >= gameWidth - 10) {
-            console.log("new scene right")
-            this.changeToNextScene('SceneB', { newPlayerX: 10, newPlayerY: this.player.y });
-        }
-
-        // Check if player reaches the left edge
-        if (this.player.x <= 10) {
-            console.log("new scene left")
-            // this.changeToNextScene('SceneC', { newPlayerX: gameWidth - 10, newPlayerY: this.player.y });
-        }
-
-        // Add checks for top/bottom edges as needed
-
-
-        // JUMP
         if (cursors.up.isDown && this.player.body.touching.down) {
             this.player.setVelocityY(-480);
         }

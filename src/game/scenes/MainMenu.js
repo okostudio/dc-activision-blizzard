@@ -33,7 +33,7 @@ export class MainMenu extends Scene {
         }).setFixedSize(60, 0).setPadding(8, 4).setScale(1);
 
         this.input.once('pointerdown', () => {
-            this.scene.start('Game');
+            this.scene.start('Scene1');
         });
     }
 }

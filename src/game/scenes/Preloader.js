@@ -32,9 +32,60 @@ export class Preloader extends Scene {
         this.load.image('black', 'black.png');
         this.load.image('logo_dc', 'logo-dc.png');
         this.load.image('logo_act_blizz', 'logo-act-bliz.png');
+
+        this.load.spritesheet('man', 'man.png', {
+            frameWidth: 40,
+            frameHeight: 50,
+        });
+
+        this.load.spritesheet('croc', 'croc.png', {
+            frameWidth: 28,
+            frameHeight: 16,
+        });
     }
 
     create() {
+
+        this.anims.create({
+            key: "lookLeft",
+            frames: [{ key: "man", frame: 6 }],
+            frameRate: 10,
+        });
+        this.anims.create({
+            key: "lookRight",
+            frames: [{ key: "man", frame: 7 }],
+            frameRate: 10,
+        });
+        this.anims.create({
+            key: "jumpRight",
+            frames: [{ key: "man", frame: 8 }],
+            frameRate: 10,
+        });
+        this.anims.create({
+            key: "jumpLeft",
+            frames: [{ key: "man", frame: 5 }],
+            frameRate: 10,
+        });
+        this.anims.create({
+            key: "runRight",
+            frames: this.anims.generateFrameNumbers("man", { start: 8, end: 12 }),
+            frameRate: 10,
+            repeat: -1,
+        });
+        this.anims.create({
+            key: "runLeft",
+            frames: this.anims.generateFrameNumbers("man", { start: 5, end: 1 }),
+            frameRate: 10,
+            repeat: -1,
+        });
+
+        this.anims.create({
+            key: "crocSnap",
+            frames: this.anims.generateFrameNumbers("croc", { start: 0, end: 1 }),
+            frameRate: 1,
+            repeat: -1,
+        });
+
         //  When all the assets have loaded, it's often worth creating global objects here that the rest of the game can use.
         //  For example, you can define global animations here, so we can use them in other scenes.
 
