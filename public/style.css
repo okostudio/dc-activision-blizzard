@@ -13,3 +13,11 @@ body {
     justify-content: center;
     align-items: center;
 }
+
+
+@font-face {
+    font-family: "PressStart2P";
+    src: url('fonts/PressStart2P-Regular.ttf');
+    font-weight: 500;
+    font-weight: normal;
+}
