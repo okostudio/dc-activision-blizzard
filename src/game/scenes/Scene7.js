@@ -1,11 +1,11 @@
 import { Scene } from 'phaser';
 
 import logo_dc from "../assets/logo-dc.png";
-import forest from "../assets/forest-2.png";
-import pitTop from "../assets/forest-2-overlay.png";
+import forest_3 from "../assets/forest_3.png";
+import overlay_3 from "../assets/forest_3-overlay.png";
 import platform from "../assets/platform.png";
 import tv_lines from "../assets/tv-lines.png";
-import text_7 from "../assets/scene_text7.png";
+import text_7 from "../assets/scene_text5.png";
 import man from "../assets/man.png";
 
 export class Scene7 extends Scene {
@@ -19,7 +19,7 @@ export class Scene7 extends Scene {
         this.initialPlayerY = data.newPlayerY;
         this.nextSceneKey = 'Scene8';
         this.prevSceneKey = 'Scene6';
-        this.mainTextContent = "Today we’ll touch \nthe surface of how we do that."
+        this.mainTextContent = "For us at DC, \nGold comes from great ideas."
         this.mainTextContent = ""
         this.newPlayerVelocity = data.newPlayerVelovity ? data.newPlayerVelovity : 0;
     }
@@ -27,8 +27,8 @@ export class Scene7 extends Scene {
     preload() {
         this.load.image("tv_lines", tv_lines);
         this.load.image("logo_dc", logo_dc);
-        this.load.image("forest", forest);
-        this.load.image("pitTop", pitTop);
+        this.load.image("forest_3", forest_3);
+        this.load.image("overlay_3", overlay_3);
         this.load.image("platform", platform);
         this.load.image("text_7", text_7);
     }
@@ -42,7 +42,7 @@ export class Scene7 extends Scene {
         const gameWidth = this.game.config.width
         const gameHeight = this.game.config.height
 
-        this.add.image(gameWidth * 0.5, 160, "forest");
+        this.add.image(gameWidth * 0.5, 160, "forest_3");
         this.add.image(gameWidth * 0.5, 298, "logo_dc");
         this.add.image(gameWidth * 0.5, 160, "text_7");
 
@@ -55,8 +55,9 @@ export class Scene7 extends Scene {
         }).setFixedSize(480, 0).setScale(1);
 
         const platforms = this.physics.add.staticGroup();
-        platforms.create(45, 198, "platform").setVisible(false).setScale(0.5).refreshBody();
-        platforms.create(420, 198, "platform").setVisible(false).setScale(0.5).refreshBody();
+        platforms.create(90, 198, "platform").setVisible(false).setScale(0.5).refreshBody();
+        platforms.create(240, 198, "platform").setVisible(false).setScale(0.5).refreshBody();
+        platforms.create(390, 198, "platform").setVisible(false).setScale(0.5).refreshBody();
         platforms.create(gameWidth * 0.5, 296, "platform").setVisible(false).setScale(1.6).refreshBody();
 
         //platforms
@@ -67,7 +68,7 @@ export class Scene7 extends Scene {
         this.physics.add.collider(this.player, platforms);
 
         // OVERLAY LAYERS
-        this.add.image(gameWidth * 0.5, gameHeight * 0.5, "pitTop");
+        this.add.image(gameWidth * 0.5, gameHeight * 0.5, "overlay_3");
         this.add.image(gameWidth * 0.5, gameHeight * 0.5, "tv_lines");
 
 
