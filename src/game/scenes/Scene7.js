@@ -5,7 +5,7 @@ import forest_3 from "../assets/forest_3.png";
 import overlay_3 from "../assets/forest_3-overlay.png";
 import platform from "../assets/platform.png";
 import tv_lines from "../assets/tv-lines.png";
-import text_7 from "../assets/scene_text5.png";
+import text_7 from "../assets/scene_text7.png";
 import man from "../assets/man.png";
 
 export class Scene7 extends Scene {
