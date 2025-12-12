@@ -52,8 +52,9 @@ export class Scene8 extends Scene {
         }).setFixedSize(480, 0).setScale(1);
 
         const platforms = this.physics.add.staticGroup();
-        platforms.create(45, 198, "platform").setVisible(false).setScale(0.5).refreshBody();
-        platforms.create(420, 198, "platform").setVisible(false).setScale(0.5).refreshBody();
+        platforms.create(90, 198, "platform").setVisible(false).setScale(0.5).refreshBody();
+        platforms.create(240, 198, "platform").setVisible(false).setScale(0.5).refreshBody();
+        platforms.create(390, 198, "platform").setVisible(false).setScale(0.5).refreshBody();
         platforms.create(gameWidth * 0.5, 296, "platform").setVisible(false).setScale(1.6).refreshBody();
 
         //platforms
