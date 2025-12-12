@@ -30,11 +30,16 @@ export class Game extends Scene {
 
     create() {
 
+        this.input.once('pointerdown', () => {
+            this.scene.start(this.nextSceneKey);
+        });
+
         const gameWidth = this.game.config.width
         const gameHeight = this.game.config.height
 
         this.add.image(gameWidth * 0.5, 160, "forest");
         this.add.image(gameWidth * 0.5, 298, "logo_dc");
+        this.add.image(gameWidth * 0.5, 160, "text_0");
 
         const platforms = this.physics.add.staticGroup();
         platforms.create(45, 198, "platform").setVisible(false).setScale(0.5).refreshBody();

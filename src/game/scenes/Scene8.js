@@ -1,11 +1,10 @@
 import { Scene } from 'phaser';
 
 import logo_dc from "../assets/logo-dc.png";
-import forest from "../assets/forest-2.png";
-import pitTop from "../assets/forest-2-overlay.png";
+import bg_intro from "../assets/intro_screen.png";
 import platform from "../assets/platform.png";
 import tv_lines from "../assets/tv-lines.png";
-import man from "../assets/man.png";
+import text_8 from "../assets/scene_text8.png";
 
 export class Scene8 extends Scene {
 
@@ -16,27 +15,33 @@ export class Scene8 extends Scene {
     init(data) {
         this.initialPlayerX = data.newPlayerX;
         this.initialPlayerY = data.newPlayerY;
-        this.nextSceneKey = 'Scene7';
-        this.prevSceneKey = 'MainMenu';
+        this.nextSceneKey = 'Scene0';
+        this.prevSceneKey = 'Scene7';
         this.mainTextContent = "Tomorrow, \nwe would love to do it for \nActivision Blizzard"
+        this.mainTextContent = ""
         this.newPlayerVelocity = data.newPlayerVelovity ? data.newPlayerVelovity : 0;
     }
 
     preload() {
         this.load.image("tv_lines", tv_lines);
         this.load.image("logo_dc", logo_dc);
-        this.load.image("forest", forest);
-        this.load.image("pitTop", pitTop);
+        this.load.image("bg_intro", bg_intro);
         this.load.image("platform", platform);
+        this.load.image("text_8", text_8);
     }
 
     create() {
 
+        this.input.once('pointerdown', () => {
+            this.scene.start(this.nextSceneKey);
+        });
+
         const gameWidth = this.game.config.width
         const gameHeight = this.game.config.height
 
-        this.add.image(gameWidth * 0.5, 160, "forest");
+        this.add.image(gameWidth * 0.5, 160, "bg_intro");
         this.add.image(gameWidth * 0.5, 298, "logo_dc");
+        this.add.image(gameWidth * 0.5, 160, "text_8");
 
         this.add.text(0, 25, this.mainTextContent, {
             fontFamily: "PressStart2P",
@@ -59,7 +64,6 @@ export class Scene8 extends Scene {
         this.physics.add.collider(this.player, platforms);
 
         // OVERLAY LAYERS
-        this.add.image(gameWidth * 0.5, gameHeight * 0.5, "pitTop");
         this.add.image(gameWidth * 0.5, gameHeight * 0.5, "tv_lines");
 
 

@@ -1,4 +1,5 @@
 import { Boot } from './scenes/Boot';
+import { Scene0 } from './scenes/Scene0';
 import { Scene1 } from './scenes/Scene1';
 import { Scene2 } from './scenes/Scene2';
 import { Scene3 } from './scenes/Scene3';
@@ -9,7 +10,7 @@ import { Scene7 } from './scenes/Scene7';
 import { Scene8 } from './scenes/Scene8';
 
 import { GameOver } from './scenes/GameOver';
-import { MainMenu } from './scenes/MainMenu';
+// import { MainMenu } from './scenes/MainMenu';
 import { Preloader } from './scenes/Preloader';
 import { AUTO, Game } from 'phaser';
 
@@ -39,7 +40,8 @@ const config = {
     scene: [
         Boot,
         Preloader,
-        MainMenu,
+        // MainMenu,
+        Scene0,
         Scene1,
         Scene2,
         Scene3,

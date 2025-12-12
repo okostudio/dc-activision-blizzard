@@ -5,6 +5,7 @@ import croc_bg from "../assets/croc-bg.png";
 import croc_overlay from "../assets/croc-overlay.png";
 import platform from "../assets/platform.png";
 import tv_lines from "../assets/tv-lines.png";
+import text_2 from "../assets/scene_text2.png";
 import man from "../assets/man.png";
 
 export class Scene2 extends Scene {
@@ -19,6 +20,7 @@ export class Scene2 extends Scene {
         this.nextSceneKey = 'Scene3';
         this.prevSceneKey = 'Scene1';
         this.mainTextContent = "And just like Pitfall Harry, \nthe explorer character in this game, \nwe are on the hunt for GOLD"
+        this.mainTextContent = ""
         this.newPlayerVelocity = data.newPlayerVelovity ? data.newPlayerVelovity : 0;
     }
 
@@ -28,15 +30,21 @@ export class Scene2 extends Scene {
         this.load.image("tv_lines", tv_lines);
         this.load.image("croc_overlay", croc_overlay);
         this.load.image("platform", platform);
+        this.load.image("text_2", text_2);
     }
 
     create() {
+
+        this.input.once('pointerdown', () => {
+            this.scene.start(this.nextSceneKey);
+        });
 
         const gameWidth = this.game.config.width
         const gameHeight = this.game.config.height
 
         this.add.image(gameWidth * 0.5, 160, "croc_bg");
         this.add.image(gameWidth * 0.5, 298, "logo_dc");
+        this.add.image(gameWidth * 0.5, 160, "text_2");
 
         this.add.text(0, 25, this.mainTextContent, {
             fontFamily: "PressStart2P",

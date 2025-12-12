@@ -1,24 +1,24 @@
 import { Scene } from 'phaser';
 
 import logo_dc from "../assets/logo-dc.png";
-import forest from "../assets/forest-2.png";
-import pitTop from "../assets/forest-2-overlay.png";
+import bg_intro from "../assets/intro_screen.png";
+// import pitTop from "../assets/forest-2-overlay.png";
 import platform from "../assets/platform.png";
 import tv_lines from "../assets/tv-lines.png";
-import text_1 from "../assets/scene_text1.png";
+import text_0 from "../assets/scene_text0.png";
 import man from "../assets/man.png";
 
-export class Scene1 extends Scene {
+export class Scene0 extends Scene {
 
     constructor() {
-        super('Scene1');
+        super('Scene0');
     }
 
     init(data) {
         this.initialPlayerX = data.newPlayerX;
         this.initialPlayerY = data.newPlayerY;
-        this.nextSceneKey = 'Scene2';
-        this.prevSceneKey = 'Scene0';
+        this.nextSceneKey = 'Scene1';
+        this.prevSceneKey = 'Scene8';
         this.mainTextContent = "We are \nDentsu Creative \nand we are excited \nto be here."
         this.mainTextContent = ""
         this.newPlayerVelocity = data.newPlayerVelovity ? data.newPlayerVelovity : 0;
@@ -26,11 +26,12 @@ export class Scene1 extends Scene {
 
     preload() {
         this.load.image("tv_lines", tv_lines);
+        this.load.image("text_0", text_0);
         this.load.image("logo_dc", logo_dc);
-        this.load.image("forest", forest);
-        this.load.image("pitTop", pitTop);
+        this.load.image("bg_intro", bg_intro);
+        // this.load.image("pitTop", pitTop);
         this.load.image("platform", platform);
-        this.load.image("text_1", text_1);
+        this.load.image("text_0", text_0);
     }
 
     create() {
@@ -42,9 +43,9 @@ export class Scene1 extends Scene {
         const gameWidth = this.game.config.width
         const gameHeight = this.game.config.height
 
-        this.add.image(gameWidth * 0.5, 160, "forest");
+        this.add.image(gameWidth * 0.5, 160, "bg_intro");
         this.add.image(gameWidth * 0.5, 298, "logo_dc");
-        this.add.image(gameWidth * 0.5, 160, "text_1");
+        this.add.image(gameWidth * 0.5, 160, "text_0");
 
         this.add.text(0, 25, this.mainTextContent, {
             fontFamily: "PressStart2P",
@@ -55,8 +56,9 @@ export class Scene1 extends Scene {
         }).setFixedSize(480, 0).setScale(1);
 
         const platforms = this.physics.add.staticGroup();
-        platforms.create(45, 198, "platform").setVisible(false).setScale(0.5).refreshBody();
-        platforms.create(420, 198, "platform").setVisible(false).setScale(0.5).refreshBody();
+        platforms.create(90, 198, "platform").setVisible(false).setScale(0.5).refreshBody();
+        platforms.create(240, 198, "platform").setVisible(false).setScale(0.5).refreshBody();
+        platforms.create(390, 198, "platform").setVisible(false).setScale(0.5).refreshBody();
         platforms.create(gameWidth * 0.5, 296, "platform").setVisible(false).setScale(1.6).refreshBody();
 
         //platforms
@@ -68,7 +70,7 @@ export class Scene1 extends Scene {
 
 
         // OVERLAY LAYERS
-        this.add.image(gameWidth * 0.5, gameHeight * 0.5, "pitTop");
+        // this.add.image(gameWidth * 0.5, gameHeight * 0.5, "pitTop");
         this.add.image(gameWidth * 0.5, gameHeight * 0.5, "tv_lines");
 
     }

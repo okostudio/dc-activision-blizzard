@@ -5,6 +5,7 @@ import forest from "../assets/forest-2.png";
 import pitTop from "../assets/forest-2-overlay.png";
 import platform from "../assets/platform.png";
 import tv_lines from "../assets/tv-lines.png";
+import text_7 from "../assets/scene_text7.png";
 import man from "../assets/man.png";
 
 export class Scene7 extends Scene {
@@ -19,6 +20,7 @@ export class Scene7 extends Scene {
         this.nextSceneKey = 'Scene8';
         this.prevSceneKey = 'Scene6';
         this.mainTextContent = "Today we’ll touch \nthe surface of how we do that."
+        this.mainTextContent = ""
         this.newPlayerVelocity = data.newPlayerVelovity ? data.newPlayerVelovity : 0;
     }
 
@@ -28,15 +30,21 @@ export class Scene7 extends Scene {
         this.load.image("forest", forest);
         this.load.image("pitTop", pitTop);
         this.load.image("platform", platform);
+        this.load.image("text_7", text_7);
     }
 
     create() {
+
+        this.input.once('pointerdown', () => {
+            this.scene.start(this.nextSceneKey);
+        });
 
         const gameWidth = this.game.config.width
         const gameHeight = this.game.config.height
 
         this.add.image(gameWidth * 0.5, 160, "forest");
         this.add.image(gameWidth * 0.5, 298, "logo_dc");
+        this.add.image(gameWidth * 0.5, 160, "text_7");
 
         this.add.text(0, 25, this.mainTextContent, {
             fontFamily: "PressStart2P",
