@@ -79,6 +79,7 @@ export class Preloader extends Scene {
             repeat: -1,
         });
 
+        // CROC SNAPPING
         this.anims.create({
             key: "crocSnap",
             frames: this.anims.generateFrameNumbers("croc", { start: 0, end: 1 }),

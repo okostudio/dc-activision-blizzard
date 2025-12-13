@@ -5,7 +5,7 @@ import croc_bg from "../assets/croc-bg.png";
 import croc_overlay from "../assets/croc-overlay.png";
 import platform from "../assets/platform.png";
 import tv_lines from "../assets/tv-lines.png";
-import text_2 from "../assets/scene_text2.png";
+import text_2 from "../assets/text/scene_text2.png";
 import man from "../assets/man.png";
 
 export class Scene2 extends Scene {
@@ -127,11 +127,19 @@ export class Scene2 extends Scene {
         const gameWidth = this.game.config.width
         if (this.player.x >= gameWidth - 15) {
             console.log("new scene right")
-            this.changeToNextScene(this.nextSceneKey, { newPlayerX: 20, newPlayerY: this.player.y, newPlayerVelovity: this.player.body.velocity.x });
+            if (this.nextSceneKey) {
+                this.changeToNextScene(this.nextSceneKey, { newPlayerX: 20, newPlayerY: this.player.y, newPlayerVelovity: this.player.body.velocity.x });
+            } else if (cursors.right.isDown) {
+                this.player.setVelocityX(0);
+            }
         }
         if (this.player.x <= 15) {
             console.log("new scene left")
-            this.changeToNextScene(this.prevSceneKey, { newPlayerX: gameWidth - 20, newPlayerY: this.player.y, newPlayerVelovity: this.player.body.velocity.x });
+            if (this.prevSceneKey) {
+                this.changeToNextScene(this.prevSceneKey, { newPlayerX: gameWidth - 20, newPlayerY: this.player.y, newPlayerVelovity: this.player.body.velocity.x });
+            } else if (cursors.left.isDown) {
+                this.player.setVelocityX(0);
+            }
         }
 
         // JUMP
