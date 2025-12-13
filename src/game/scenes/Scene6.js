@@ -55,9 +55,9 @@ export class Scene6 extends Scene {
         }).setFixedSize(480, 0).setScale(1);
 
         const platforms = this.physics.add.staticGroup();
-        platforms.create(45, 198, "platform").setVisible(false).setScale(0.5).refreshBody();
-        platforms.create(420, 198, "platform").setVisible(false).setScale(0.5).refreshBody();
-        platforms.create(gameWidth * 0.5, 296, "platform").setVisible(false).setScale(1.6).refreshBody();
+        platforms.create(45, 193, "platform").setVisible(false).setScale(0.5).refreshBody();
+        platforms.create(420, 193, "platform").setVisible(false).setScale(0.5).refreshBody();
+        platforms.create(gameWidth * 0.5, 286, "platform").setVisible(false).setScale(1.6).refreshBody();
 
         //platforms
         this.player = this.physics.add.sprite(this.initialPlayerX ? this.initialPlayerX : 60, this.initialPlayerY ? this.initialPlayerY : 90, "man"); this.player.setBounce(0.1);

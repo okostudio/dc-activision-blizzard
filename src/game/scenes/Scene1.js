@@ -2,7 +2,7 @@ import { Scene } from 'phaser';
 
 import logo_dc from "../assets/logo-dc.png";
 import forest from "../assets/forest-2.png";
-import pitTop from "../assets/forest-2-overlay.png";
+import forest_2_overlay from "../assets/forest-2-overlay.png";
 import platform from "../assets/platform.png";
 import tv_lines from "../assets/tv-lines.png";
 import text_1 from "../assets/text/scene_text1.png";
@@ -28,7 +28,7 @@ export class Scene1 extends Scene {
         this.load.image("tv_lines", tv_lines);
         this.load.image("logo_dc", logo_dc);
         this.load.image("forest", forest);
-        this.load.image("pitTop", pitTop);
+        this.load.image("forest_2_overlay", forest_2_overlay);
         this.load.image("platform", platform);
         this.load.image("text_1", text_1);
     }
@@ -55,9 +55,9 @@ export class Scene1 extends Scene {
         }).setFixedSize(480, 0).setScale(1);
 
         const platforms = this.physics.add.staticGroup();
-        platforms.create(45, 198, "platform").setVisible(false).setScale(0.5).refreshBody();
-        platforms.create(420, 198, "platform").setVisible(false).setScale(0.5).refreshBody();
-        platforms.create(gameWidth * 0.5, 296, "platform").setVisible(false).setScale(1.6).refreshBody();
+        platforms.create(45, 193, "platform").setVisible(false).setScale(0.5).refreshBody();
+        platforms.create(420, 193, "platform").setVisible(false).setScale(0.5).refreshBody();
+        platforms.create(gameWidth * 0.5, 286, "platform").setVisible(false).setScale(1.6).refreshBody();
 
         //platforms
         this.player = this.physics.add.sprite(this.initialPlayerX ? this.initialPlayerX : 60, this.initialPlayerY ? this.initialPlayerY : 90, "man"); this.player.setBounce(0.1);
@@ -68,7 +68,7 @@ export class Scene1 extends Scene {
 
 
         // OVERLAY LAYERS
-        this.add.image(gameWidth * 0.5, gameHeight * 0.5, "pitTop");
+        this.add.image(gameWidth * 0.5, gameHeight * 0.5, "forest_2_overlay");
         this.add.image(gameWidth * 0.5, gameHeight * 0.5, "tv_lines");
 
     }
