@@ -66,6 +66,10 @@ export class Scene6 extends Scene {
         this.player.setCollideWorldBounds(false);
         this.physics.add.collider(this.player, platforms);
 
+        this.treasure = [
+            this.add.sprite(425, 183, 'gold'),
+        ]
+
         // OVERLAY LAYERS
         this.add.image(gameWidth * 0.5, gameHeight * 0.5, "pitTop");
         this.add.image(gameWidth * 0.5, gameHeight * 0.5, "tv_lines");
@@ -75,6 +79,10 @@ export class Scene6 extends Scene {
 
     update() {
         const cursors = this.input.keyboard.createCursorKeys();
+
+        this.treasure.map(gold => {
+            gold.anims.play("goldShine", true);
+        })
 
         if (cursors.left.isDown && !cursors.up.isDown) {
             // RUN LEFT
@@ -104,7 +112,6 @@ export class Scene6 extends Scene {
         // Check if player reaches the  edge of the screen
         const gameWidth = this.game.config.width
         if (this.player.x >= gameWidth - 15) {
-            console.log("new scene right")
             if (this.nextSceneKey) {
                 this.changeToNextScene(this.nextSceneKey, { newPlayerX: 20, newPlayerY: this.player.y, newPlayerVelovity: this.player.body.velocity.x });
             } else if (cursors.right.isDown) {
@@ -112,7 +119,6 @@ export class Scene6 extends Scene {
             }
         }
         if (this.player.x <= 15) {
-            console.log("new scene left")
             if (this.prevSceneKey) {
                 this.changeToNextScene(this.prevSceneKey, { newPlayerX: gameWidth - 20, newPlayerY: this.player.y, newPlayerVelovity: this.player.body.velocity.x });
             } else if (cursors.left.isDown) {

@@ -6,7 +6,6 @@ import pitTop from "../assets/forest-2-overlay.png";
 import platform from "../assets/platform.png";
 import tv_lines from "../assets/tv-lines.png";
 import text_4 from "../assets/text/scene_text4.png";
-import man from "../assets/man.png";
 
 export class Scene4 extends Scene {
 
@@ -43,6 +42,7 @@ export class Scene4 extends Scene {
         const gameHeight = this.game.config.height
 
         this.add.image(gameWidth * 0.5, 160, "forest");
+        this.rope = this.add.sprite(232, 134, 'rope').setScale(2);
         this.add.image(gameWidth * 0.5, 298, "logo_dc");
         this.add.image(gameWidth * 0.5, 160, "text_4");
 
@@ -76,6 +76,10 @@ export class Scene4 extends Scene {
     update() {
         const cursors = this.input.keyboard.createCursorKeys();
 
+
+        this.rope.anims.play("ropeSwing", true);
+
+
         if (cursors.left.isDown && !cursors.up.isDown) {
             // RUN LEFT
             this.player.setVelocityX(-180);
@@ -104,7 +108,6 @@ export class Scene4 extends Scene {
         // Check if player reaches the  edge of the screen
         const gameWidth = this.game.config.width
         if (this.player.x >= gameWidth - 15) {
-            console.log("new scene right")
             if (this.nextSceneKey) {
                 this.changeToNextScene(this.nextSceneKey, { newPlayerX: 20, newPlayerY: this.player.y, newPlayerVelovity: this.player.body.velocity.x });
             } else if (cursors.right.isDown) {
@@ -112,7 +115,6 @@ export class Scene4 extends Scene {
             }
         }
         if (this.player.x <= 15) {
-            console.log("new scene left")
             if (this.prevSceneKey) {
                 this.changeToNextScene(this.prevSceneKey, { newPlayerX: gameWidth - 20, newPlayerY: this.player.y, newPlayerVelovity: this.player.body.velocity.x });
             } else if (cursors.left.isDown) {

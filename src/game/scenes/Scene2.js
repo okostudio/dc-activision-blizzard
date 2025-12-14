@@ -72,6 +72,10 @@ export class Scene2 extends Scene {
             this.add.sprite(280, 182, 'croc')
         ]
 
+        this.treasure = [
+            this.add.sprite(385, 268, 'gold'),
+        ]
+
         // OVERLAY LAYERS
         this.add.image(gameWidth * 0.5, gameHeight * 0.5, "croc_overlay");
         this.add.image(gameWidth * 0.5, gameHeight * 0.5, "tv_lines");
@@ -95,6 +99,9 @@ export class Scene2 extends Scene {
 
         this.crocs.map(croc => {
             croc.anims.play("crocSnap", true);
+        })
+        this.treasure.map(gold => {
+            gold.anims.play("goldShine", true);
         })
 
 
@@ -126,7 +133,6 @@ export class Scene2 extends Scene {
         // Check if player reaches the  edge of the screen
         const gameWidth = this.game.config.width
         if (this.player.x >= gameWidth - 15) {
-            console.log("new scene right")
             if (this.nextSceneKey) {
                 this.changeToNextScene(this.nextSceneKey, { newPlayerX: 20, newPlayerY: this.player.y, newPlayerVelovity: this.player.body.velocity.x });
             } else if (cursors.right.isDown) {
@@ -134,7 +140,6 @@ export class Scene2 extends Scene {
             }
         }
         if (this.player.x <= 15) {
-            console.log("new scene left")
             if (this.prevSceneKey) {
                 this.changeToNextScene(this.prevSceneKey, { newPlayerX: gameWidth - 20, newPlayerY: this.player.y, newPlayerVelovity: this.player.body.velocity.x });
             } else if (cursors.left.isDown) {

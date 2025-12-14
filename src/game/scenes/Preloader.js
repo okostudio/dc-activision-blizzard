@@ -42,6 +42,16 @@ export class Preloader extends Scene {
             frameWidth: 28,
             frameHeight: 16,
         });
+
+        this.load.spritesheet('rope', 'rope.png', {
+            frameWidth: 100,
+            frameHeight: 32,
+        });
+
+        this.load.spritesheet('gold', 'gold.png', {
+            frameWidth: 16,
+            frameHeight: 16,
+        });
     }
 
     create() {
@@ -85,6 +95,24 @@ export class Preloader extends Scene {
             frames: this.anims.generateFrameNumbers("croc", { start: 0, end: 1 }),
             frameRate: 1,
             repeat: -1,
+        });
+
+        // ROPE SWINGING
+        this.anims.create({
+            key: "ropeSwing",
+            frames: this.anims.generateFrameNumbers("rope", { start: 0, end: 7 }),
+            frameRate: 3,
+            repeat: -1,
+            yoyo: true
+        });
+
+        // ROPE SWINGING
+        this.anims.create({
+            key: "goldShine",
+            frames: this.anims.generateFrameNumbers("gold", { start: 0, end: 3 }),
+            frameRate: 6,
+            repeat: -1,
+            yoyo: true
         });
 
         //  When all the assets have loaded, it's often worth creating global objects here that the rest of the game can use.

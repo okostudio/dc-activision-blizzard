@@ -27,7 +27,6 @@ export class Scene0 extends Scene {
         this.load.image("text_0", text_0);
         this.load.image("logo_dc", logo_dc);
         this.load.image("bg_intro", bg_intro);
-        // this.load.image("pitTop", pitTop);
         this.load.image("platform", platform);
         this.load.image("text_0", text_0);
     }
@@ -104,7 +103,6 @@ export class Scene0 extends Scene {
         // Check if player reaches the  edge of the screen
         const gameWidth = this.game.config.width
         if (this.player.x >= gameWidth - 15) {
-            console.log("new scene right")
             if (this.nextSceneKey) {
                 this.changeToNextScene(this.nextSceneKey, { newPlayerX: 20, newPlayerY: this.player.y, newPlayerVelovity: this.player.body.velocity.x });
             } else if (cursors.right.isDown) {
@@ -112,7 +110,6 @@ export class Scene0 extends Scene {
             }
         }
         if (this.player.x <= 15) {
-            console.log("new scene left")
             if (this.prevSceneKey) {
                 this.changeToNextScene(this.prevSceneKey, { newPlayerX: gameWidth - 20, newPlayerY: this.player.y, newPlayerVelovity: this.player.body.velocity.x });
             } else if (cursors.left.isDown) {
