@@ -6,7 +6,7 @@ import overlay_3 from "../assets/forest_3-overlay.png";
 import platform from "../assets/platform.png";
 import tv_lines from "../assets/tv-lines.png";
 import text_5 from "../assets/text/scene_text5.png";
-import man from "../assets/man.png";
+
 
 export class Scene5 extends Scene {
 
@@ -72,6 +72,9 @@ export class Scene5 extends Scene {
         this.add.image(gameWidth * 0.5, gameHeight * 0.5, "tv_lines");
 
 
+        // Set the initial idle timer
+        this.idleTimerEvent;
+        // this.idleTimerEvent = this.time.delayedCall(5000, () => { this.player.play('danceDance') }, [], this);
     }
 
     update() {
@@ -80,11 +83,15 @@ export class Scene5 extends Scene {
         if (cursors.left.isDown && !cursors.up.isDown) {
             // RUN LEFT
             this.player.setVelocityX(-180);
-            this.player.anims.play("runLeft", true);
+            if (this.player.body.onFloor()) {
+                this.player.anims.play("runLeft", true);
+            }
         } else if (cursors.right.isDown && !cursors.up.isDown) {
             // RUN RIGHT
             this.player.setVelocityX(180);
-            this.player.anims.play("runRight", true);
+            if (this.player.body.onFloor()) {
+                this.player.anims.play("runRight", true);
+            }
         } else if (cursors.up.isDown) {
             // JUMP
             if (cursors.left.isDown) {
@@ -93,13 +100,18 @@ export class Scene5 extends Scene {
                 this.player.anims.play("jumpRight", true);
             }
         } else {
-            // STAND STILL
-            if (this.player.FACING_LEFT) {
-                this.player.anims.play("lookLeft");
-            } else {
-                this.player.anims.play("lookRight");
-            }
             this.player.setVelocityX(0);
+        }
+
+        if (cursors.left.isDown || cursors.right.isDown || cursors.up.isDown) {
+            if (this.idleTimerEvent) {
+                this.idleTimerEvent.destroy(); // or idleTimerEvent.remove(false);
+            }
+        } else {
+            if (this.player.anims.currentAnim && this.player.anims.currentAnim.key !== 'lookRight' && this.player.anims.currentAnim.key !== 'danceDance') {
+                this.player.anims.play('lookRight');
+                this.idleTimerEvent = this.time.delayedCall(2000, () => { this.player.anims.play("danceDance") });
+            }
         }
 
         // Check if player reaches the  edge of the screen

@@ -6,7 +6,7 @@ import pitTop from "../assets/forest-2-overlay.png";
 import platform from "../assets/platform.png";
 import tv_lines from "../assets/tv-lines.png";
 import text_6 from "../assets/text/scene_text6.png";
-import man from "../assets/man.png";
+
 
 export class Scene6 extends Scene {
 

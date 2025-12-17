@@ -6,7 +6,7 @@ import croc_overlay from "../assets/croc-overlay.png";
 import platform from "../assets/platform.png";
 import tv_lines from "../assets/tv-lines.png";
 import text_2 from "../assets/text/scene_text2.png";
-import man from "../assets/man.png";
+
 
 export class Scene2 extends Scene {
 

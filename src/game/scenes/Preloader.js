@@ -57,6 +57,13 @@ export class Preloader extends Scene {
     create() {
 
         this.anims.create({
+            key: "danceDance",
+            frames: this.anims.generateFrameNumbers("man", { start: 16, end: 30 }),
+            frameRate: 5,
+            repeat: 0,
+            yoyo: true,
+        });
+        this.anims.create({
             key: "lookLeft",
             frames: [{ key: "man", frame: 6 }],
             frameRate: 10,
